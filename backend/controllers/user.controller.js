@@ -25,9 +25,7 @@ export const register = async (req, res) => {
         const file = req.file;
         let cloudResponse =undefined;
      
-        if (file) {
-            console.log(process.env.API_KEY)
-            
+        if (file) {          
              const fileUri = getDataUri(file);
          cloudResponse = await cloudinary.uploader.upload(fileUri.content);
         }
