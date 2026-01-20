@@ -117,6 +117,7 @@ const Signup = () => {
                         <RadioGroup className="flex items-center gap-4 my-5">
                             <div className="flex items-center space-x-2">
                                 <Input
+                                    id="r1"
                                     type="radio"
                                     name="role"
                                     value="student"
@@ -128,6 +129,7 @@ const Signup = () => {
                             </div>
                             <div className="flex items-center space-x-2">
                                 <Input
+                                    id="r2"
                                     type="radio"
                                     name="role"
                                     value="recruiter"
