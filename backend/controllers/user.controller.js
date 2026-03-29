@@ -11,9 +11,10 @@ export const register = async (req, res) => {
 
    
     try {
+
         const { fullname, email, phoneNumber, password, role } = req.body;
 
-        console.log(fullname,email)
+     
 
         if (!fullname || !email || !phoneNumber || !password || !role) {
             return res.status(400).json({
@@ -22,9 +23,11 @@ export const register = async (req, res) => {
             });
         };
         const file = req.file;
-        if (file) {
+        let cloudResponse =undefined;
+     
+        if (file) {          
              const fileUri = getDataUri(file);
-        const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+         cloudResponse = await cloudinary.uploader.upload(fileUri.content);
         }
        
 
@@ -43,7 +46,7 @@ export const register = async (req, res) => {
             phoneNumber,
             password: hashedPassword,
             role,
-            profile: file ? {
+            profile: cloudResponse ? {
                 profilePhoto:cloudResponse.secure_url,
             }:undefined
         });
